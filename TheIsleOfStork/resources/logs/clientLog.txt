@@ -1,0 +1,6 @@
+[HH:MM:SS] Start of client log.
+[23:18:01] The Isle of Stork
+[23:18:01] Created by Lyes Oussaiden
+[23:18:01] Version: In-Development
+[23:18:08] Initialised event handler.
+[23:18:08] Initialised render.

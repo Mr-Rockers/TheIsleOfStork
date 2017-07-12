@@ -1,0 +1,5 @@
+[HH:MM:SS] Start of render log.
+[23:18:08] Shader program 'basicShader' initialised.
+[23:18:08] Attached "resources/shaders/fragment/basic.glsl" to 'basicShader' shader.
+[23:18:08] Attached "resources/shaders/vertex/basic.glsl" to 'basicShader' shader.
+[23:18:08] Linked 'basicShader' shader program.
