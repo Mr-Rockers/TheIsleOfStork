@@ -1,1 +1,2 @@
 [HH:MM:SS] Start of event log.
+[22:55:44] End of log.

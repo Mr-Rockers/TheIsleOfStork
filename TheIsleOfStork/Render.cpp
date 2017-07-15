@@ -3,7 +3,7 @@
 Render::Render(SDL_Window* window) : _window(window) {
 	this->renderOutputLog = new OutputLog("render", this->renderOutputLogLocation);
 
-	Shader basicShader = Shader(this, "basicShader");
+	ShaderProgram basicShader = ShaderProgram(this, "basicShader", &this->shaderRegistry);
 	basicShader.attachShader("fragment/basic.glsl", GL_FRAGMENT_SHADER);
 	basicShader.attachShader("vertex/basic.glsl", GL_VERTEX_SHADER);
 	basicShader.compileProgram();

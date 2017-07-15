@@ -1,27 +1,28 @@
 #include "Render.h"
 
-Shader::Shader() : initialised(false) {}
-Shader::Shader(Render* render, std::string name) : _render(render), _name(name), shaderIDs(std::vector<unsigned int>()), initialised(true), compileCompleted(false) {
+ShaderProgram::ShaderProgram() : initialised(false) {}
+ShaderProgram::ShaderProgram(Render* render, std::string name, std::map<std::string, ShaderProgram*>* parentShaderRegistry) : _render(render), _name(name), _parentShaderRegistry(parentShaderRegistry), shaderIDs(std::vector<unsigned int>()), initialised(true), compileCompleted(false) {
 	this->compiledShaderProgramID = glCreateProgram();
 	this->_render->renderOutputLog->log(std::string("Shader program \'").append(this->_name).append("\' initialised."), true);
-	Shader::registry.emplace(this->_name, this);
+	
+	this->_parentShaderRegistry->insert({ this->_name, this });
 }
 
-Shader::~Shader() {
+ShaderProgram::~ShaderProgram() {
 	if (this->initialised) {
 		if (this->compileCompleted) {
 			glDeleteProgram(this->compiledShaderProgramID);
 		}
 		else {
-			for (int i = 0; i < this->shaderIDs.size(); i++) {
+			for (GLuint i = 0; i < this->shaderIDs.size(); i++) {
 				glDeleteShader(this->shaderIDs.at(i));
 			}
 		}
-		Shader::registry.erase(this->_name);
+		this->_parentShaderRegistry->erase(this->_name);
 	}
 }
 
-void Shader::attachShader(std::string localLocation, GLenum shaderType) {
+void ShaderProgram::attachShader(std::string localLocation, GLenum shaderType) {
 	if (this->initialised) {
 		std::string location = std::string(this->baseShaderLocation).append(localLocation);
 		std::string data = Utility::loadText(location);
@@ -54,10 +55,10 @@ void Shader::attachShader(std::string localLocation, GLenum shaderType) {
 	}
 }
 
-bool Shader::compileProgram() {
+bool ShaderProgram::compileProgram() {
 	if (this->initialised && this->compileCompleted == false) {
 
-		for (int i = 0; i < this->shaderIDs.size(); i++) {
+		for (GLuint i = 0; i < this->shaderIDs.size(); i++) {
 			glAttachShader(this->compiledShaderProgramID, this->shaderIDs.at(i));
 		}
 		glLinkProgram(this->compiledShaderProgramID);
@@ -68,7 +69,7 @@ bool Shader::compileProgram() {
 		glGetProgramiv(this->compiledShaderProgramID, GL_LINK_STATUS, &programLinkSuccess);
 
 		if (programLinkSuccess) {
-			for (int i = 0; i < this->shaderIDs.size(); i++) {
+			for (GLuint i = 0; i < this->shaderIDs.size(); i++) {
 				glDeleteShader(this->shaderIDs.at(i));
 			}
 			this->compileCompleted = true;
@@ -84,7 +85,7 @@ bool Shader::compileProgram() {
 	return false;
 }
 
-GLuint Shader::getShaderProgramID() {
+GLuint ShaderProgram::getShaderProgramID() {
 	if (this->initialised) {
 		if (this->compileCompleted) {
 			return this->compiledShaderProgramID;
@@ -92,7 +93,7 @@ GLuint Shader::getShaderProgramID() {
 		else
 		{
 			this->_render->renderOutputLog->log(std::string("Cannot retrieve shader program ID for \"").append(this->_name).append("\' as shader program has not been compiled correctly."), true);
-			return NULL;
 		}
 	}
+	return NULL;
 }
