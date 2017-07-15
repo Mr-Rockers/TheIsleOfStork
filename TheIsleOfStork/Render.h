@@ -35,6 +35,8 @@ public:
 	void attachShader(std::string localLocation, GLenum shaderType);
 	bool compileProgram();
 	GLuint getShaderProgramID();
+
+	static std::map<std::string, Shader*> registry;
 };
 
 #endif

@@ -4,6 +4,7 @@ Shader::Shader() : initialised(false) {}
 Shader::Shader(Render* render, std::string name) : _render(render), _name(name), shaderIDs(std::vector<unsigned int>()), initialised(true), compileCompleted(false) {
 	this->compiledShaderProgramID = glCreateProgram();
 	this->_render->renderOutputLog->log(std::string("Shader program \'").append(this->_name).append("\' initialised."), true);
+	Shader::registry.emplace(this->_name, this);
 }
 
 Shader::~Shader() {
@@ -16,6 +17,7 @@ Shader::~Shader() {
 				glDeleteShader(this->shaderIDs.at(i));
 			}
 		}
+		Shader::registry.erase(this->_name);
 	}
 }
 
