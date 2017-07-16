@@ -36,19 +36,19 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{EFD3B1A7-7E1E-409A-9D39-505AD7495FCF}</ProjectGuid>
     <RootNamespace>TheIsleOfStork</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -84,12 +84,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>F:\APIs\SDL2-2.0.5\include;F:\APIs\glew-2.0.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\APIs\SDL2-2.0.5\lib\x86;F:\APIs\glew-2.0.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\ProgrammingLibraries\SDL2-2.0.5\include\SDL;C:\ProgrammingLibraries\glew-1.13.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\ProgrammingLibraries\SDL2-2.0.5\lib\x86;C:\ProgrammingLibraries\glew-1.13.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>F:\APIs\SDL2-2.0.5\include;F:\APIs\glew-2.0.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\APIs\SDL2-2.0.5\lib\x86;F:\APIs\glew-2.0.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\ProgrammingLibraries\SDL2-2.0.5\include\SDL;C:\ProgrammingLibraries\glew-1.13.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\ProgrammingLibraries\SDL2-2.0.5\lib\x86;C:\ProgrammingLibraries\glew-1.13.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
