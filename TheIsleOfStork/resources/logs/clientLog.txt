@@ -1,8 +1,0 @@
-[HH:MM:SS] Start of client log.
-[22:55:42] The Isle of Stork
-[22:55:42] Created by Lyes Oussaiden
-[22:55:42] Version: In-Development
-[22:55:42] Initialised event handler.
-[22:55:42] Initialised render.
-[22:55:44] Client terminated successfully.
-[22:55:44] End of log.
