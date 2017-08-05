@@ -84,12 +84,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\ProgrammingLibraries\SDL2-2.0.5\include\SDL;C:\ProgrammingLibraries\glew-1.13.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\ProgrammingLibraries\SDL2-2.0.5\lib\x86;C:\ProgrammingLibraries\glew-1.13.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\ProgrammingLibraries\SDL2-2.0.5\include\SDL;C:\ProgrammingLibraries\glew-1.13.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\ProgrammingLibraries\SDL2-2.0.5\lib\x86;C:\ProgrammingLibraries\glew-1.13.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -97,6 +97,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\ProgrammingLibraries\glew-1.13.0\include;C:\ProgrammingLibraries\SDL2-2.0.5\include\SDL</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>C:\ProgrammingLibraries\glew-1.13.0\lib\Release\Win32;C:\ProgrammingLibraries\SDL2-2.0.5\lib\x86;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>glew32s.lib;opengl32.lib;sdl2.lib;sdl2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -118,6 +120,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\ProgrammingLibraries\glew-1.13.0\include;C:\ProgrammingLibraries\SDL2-2.0.5\include\SDL</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>C:\ProgrammingLibraries\glew-1.13.0\lib\Release\Win32;C:\ProgrammingLibraries\SDL2-2.0.5\lib\x86;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
