@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EventHandler.cpp" />
+    <ClCompile Include="Module.cpp" />
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="Clientside.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
@@ -29,6 +30,7 @@
     <ClInclude Include="Clientside.h" />
     <ClInclude Include="Externals.h" />
     <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="Module.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
@@ -98,11 +100,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\ProgrammingLibraries\glew-1.13.0\include;C:\ProgrammingLibraries\SDL2-2.0.5\include\SDL</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>C:\ProgrammingLibraries\glew-1.13.0\lib\Release\Win32;C:\ProgrammingLibraries\SDL2-2.0.5\lib\x86;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>glew32s.lib;opengl32.lib;sdl2.lib;sdl2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>C:\ProgrammingLibraries\glew-1.13.0\lib\Release\Win32;C:\ProgrammingLibraries\SDL2-2.0.5\lib\x86;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -121,13 +124,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\ProgrammingLibraries\glew-1.13.0\include;C:\ProgrammingLibraries\SDL2-2.0.5\include\SDL</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>C:\ProgrammingLibraries\glew-1.13.0\lib\Release\Win32;C:\ProgrammingLibraries\SDL2-2.0.5\lib\x86;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>glew32s.lib;opengl32.lib;sdl2.lib;sdl2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>C:\ProgrammingLibraries\glew-1.13.0\lib\Release\Win32;C:\ProgrammingLibraries\SDL2-2.0.5\lib\x86;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

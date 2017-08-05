@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Abstract Classes">
+      <UniqueIdentifier>{8dd1cf1d-afa7-4fea-80fe-0dbb11112232}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Abstract Classes">
+      <UniqueIdentifier>{5ac46057-cfa8-4b83-9422-8c848375a4a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Modules">
+      <UniqueIdentifier>{33d7373a-cbea-417b-9825-ab2657f3b3d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utility.cpp">
@@ -30,6 +39,9 @@
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Source Files\Abstract Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utility.h">
@@ -38,14 +50,17 @@
     <ClInclude Include="Clientside.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Render.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Externals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Header Files\Abstract Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Render.h">
+      <Filter>Header Files\Modules</Filter>
+    </ClInclude>
     <ClInclude Include="EventHandler.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Modules</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -26,14 +26,14 @@ OutputLog::OutputLog(std::string name, std::string location) : initialised(true)
 
 OutputLog::~OutputLog() {
 	if (this->initialised) {
-		this->log(std::string("End of log."), true);
+		this->logOut(std::string("End of ").append(this->_name).append(" log."), true);
 		if (this->stream.is_open()) {
 			this->stream.close();
 		}
 	}
 }
 
-void OutputLog::log(std::string message, bool toFile) {
+void OutputLog::logOut(std::string message, bool toFile) {
 	if (this->initialised) {
 		if (toFile) {
 			std::time_t t = std::time(0);
@@ -48,4 +48,12 @@ void OutputLog::log(std::string message, bool toFile) {
 
 		std::cout << "(" << this->_name << ") " << message << "\n"; // Output message to console.
 	}
+}
+
+std::string OutputLog::getOutputLogName() {
+	return this->_name;
+}
+
+std::string OutputLog::getOutputLogLocation() {
+	return this->_location;
 }

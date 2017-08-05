@@ -1,27 +1,29 @@
 #include "Clientside.h"
 
+//The entry point for the program. Not worth having its own seperate .cpp file.
 int main(int argc, char** argv)
 {
 	Client* client = new Client();
-	int returnValue = client->run();
+	bool returnValue = client->run();
 	delete client;
 
-	return returnValue;
+	return returnValue ? 1 : 0;
 }
 
 Client::Client() {
 
+	//Create the log.
 	this->clientOutputLog = new OutputLog("client", this->clientOutputLogLocation);
 
 	//Log some information about the program.
-	this->clientOutputLog->log(Client::gameName, true);
-	this->clientOutputLog->log(std::string("Created by ").append(Client::gameDeveloper), true);
-	this->clientOutputLog->log(std::string("Version: ").append(Client::gameVersion), true);
-	this->clientOutputLog->log(std::string("(There's no point in having a version number this early on.)\n"), false);
+	this->clientOutputLog->logOut(Client::gameName, true);
+	this->clientOutputLog->logOut(std::string("Created by ").append(Client::gameDeveloper), true);
+	this->clientOutputLog->logOut(std::string("Version: ").append(Client::gameVersion), true);
+	this->clientOutputLog->logOut(std::string("(There's no point in having a version number this early on.)\n"), false);
 
 	//Initialise SDL.
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
-		this->clientOutputLog->log(std::string("SDL has failed to initialise!"), true);
+		this->clientOutputLog->logOut(std::string("SDL has failed to initialise!"), true);
 		this->initSuccess = false;
 		return;
 	}
@@ -36,7 +38,7 @@ Client::Client() {
 		SDL_WINDOW_OPENGL);
 
 	if (mainWindow == nullptr) {
-		this->clientOutputLog->log(std::string("SDL has failed to initialise a window!"), true);
+		this->clientOutputLog->logOut(std::string("SDL has failed to initialise a window!"), true);
 		this->initSuccess = false;
 		return;
 	}
@@ -50,7 +52,7 @@ Client::Client() {
 	//Initialise glew.
 	glewExperimental = true;
 	if (glewInit() != GLEW_OK) {
-		this->clientOutputLog->log(std::string("GLEW has failed to initialise!"), true);
+		this->clientOutputLog->logOut(std::string("GLEW has failed to initialise!"), true);
 		this->initSuccess = false;
 		return;
 	}
@@ -58,26 +60,30 @@ Client::Client() {
 	//Initialise event handler.
 	if (this->eventHandler == nullptr) {
 		this->eventHandler = new EventHandler();
-		this->clientOutputLog->log("Initialised event handler.", true);
+		this->clientOutputLog->logOut("Initialised event handler.", true);
 	}
 
 	//Initialise render.
 	if (this->render == nullptr) {
 		this->render = new Render(this->mainWindow);
-		this->clientOutputLog->log("Initialised render.", true);
+		this->clientOutputLog->logOut("Initialised render.", true);
 	}
 }
 
+//The "update" section of the program. Any and all core initialisation should have finished by now.
 bool Client::run() {
+
+	//If init has failed for whatever reason, 
 	if (!this->initSuccess) {
 		return this->initSuccess;
 	}
 
-	while (this->runUpdate) {
+	//The actual loop in question.
+	bool loop = true;
+	while (loop) {
 
 		/*HANDLE CYCLES*/
-		if (!this->eventHandler->cycle(&this->runUpdate) || !this->render->cycle()) {
-			this->runUpdate = false;
+		if (!this->eventHandler->cycle(loop) || !this->render->cycle(loop)) {
 			this->runSuccess = false;
 		}
 	}
@@ -88,7 +94,7 @@ Client::~Client() {
 	delete this->eventHandler;
 	delete this->render;
 
-	this->clientOutputLog->log(std::string("Client terminated ").append(this->initSuccess && this->runSuccess ? "successfully." : "unsuccessfully."), true);
+	this->clientOutputLog->logOut(std::string("Client terminated ").append(this->initSuccess && this->runSuccess ? "successfully." : "unsuccessfully."), true);
 	delete this->clientOutputLog;
 
 	SDL_Quit();

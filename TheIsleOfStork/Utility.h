@@ -19,7 +19,9 @@ public:
 	OutputLog();
 	OutputLog(std::string name, std::string location);
 	virtual ~OutputLog();
-	void log(std::string message, bool toFile);
+	void logOut(std::string message, bool toFile);
+	std::string getOutputLogName();
+	std::string getOutputLogLocation();
 };
 
 #endif

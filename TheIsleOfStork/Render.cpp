@@ -1,7 +1,7 @@
 #include "Render.h"
 
 Render::Render(SDL_Window* window) : _window(window) {
-	this->renderOutputLog = new OutputLog("render", this->renderOutputLogLocation);
+	this->initOutputLog("render", "resources/logs/renderLog.txt");
 
 	ShaderProgram basicShader = ShaderProgram(this, "basicShader", &this->shaderRegistry);
 	basicShader.attachShader("fragment/basic.glsl", GL_FRAGMENT_SHADER);
@@ -12,7 +12,7 @@ Render::Render(SDL_Window* window) : _window(window) {
 	glClearColor(1.0f, 0.5f, 0.5f, 1.0f);
 }
 
-bool Render::cycle() {
+bool Render::cycle(bool &loop) {
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -21,5 +21,4 @@ bool Render::cycle() {
 }
 
 Render::~Render() {
-	delete this->renderOutputLog;
 }

@@ -8,7 +8,7 @@
 #include "Render.h"
 
 class Client {
-	bool initSuccess = true, runUpdate = true, runSuccess = true;
+	bool initSuccess = true, runSuccess = true;
 
 public:
 	const std::string gameName = "The Isle of Stork",
